@@ -1,8 +1,11 @@
 @php
     $p = config('portfolio');
 
+    $currentJob = collect($p['experience'])->firstWhere('current', true);
+
     $nav = [
         'skills' => 'Skills',
+        'experience' => 'Experience',
         'projects' => 'Projects',
         'contact' => 'Contact',
     ];
@@ -113,6 +116,14 @@
                     {{ $p['role'] }}
                 </p>
 
+                @if ($currentJob)
+                    <p class="mt-3 flex flex-wrap items-center gap-x-2 text-zinc-300">
+                        <i class="fa-solid fa-briefcase text-sm text-zinc-500"></i>
+                        {{ $currentJob['role'] }} at
+                        <a href="#experience" class="font-semibold text-white underline decoration-sky-400/50 underline-offset-4 transition hover:decoration-sky-400">{{ $currentJob['company'] }}</a>
+                    </p>
+                @endif
+
                 <p class="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
                     {{ $p['bio'] }}
                 </p>
@@ -176,10 +187,73 @@
             </div>
         </section>
 
+        {{-- Experience --}}
+        <section id="experience" class="mx-auto max-w-6xl px-4 py-24 sm:px-6">
+            <div data-reveal class="max-w-2xl">
+                <p class="font-mono text-sm text-sky-400">02 / Career</p>
+                <h2 class="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">Experience</h2>
+                <p class="mt-4 text-zinc-400">Where I am building software today.</p>
+            </div>
+
+            <div class="mt-12 space-y-5">
+                @foreach ($p['experience'] as $job)
+                    <article data-reveal class="card-glow grid gap-8 rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-sky-400/30 sm:p-8 lg:grid-cols-3">
+                        <div>
+                            <div class="flex items-center gap-4">
+                                <div class="grid size-12 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-sky-400/20 to-indigo-500/20 text-lg text-sky-300 ring-1 ring-white/10">
+                                    <i class="{{ $job['icon'] }}"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-white">{{ $job['role'] }}</h3>
+                                    @isset($job['url'])
+                                        <a href="{{ $job['url'] }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-medium text-sky-300 transition hover:text-sky-200">
+                                            {{ $job['company'] }} <i class="fa-solid fa-arrow-up-right-from-square text-[0.65rem]"></i>
+                                        </a>
+                                    @else
+                                        <p class="font-medium text-sky-300">{{ $job['company'] }}</p>
+                                    @endisset
+                                </div>
+                            </div>
+
+                            <dl class="mt-6 space-y-2.5 text-sm text-zinc-400">
+                                <div class="flex items-center gap-3">
+                                    <dt class="sr-only">Period</dt>
+                                    <i class="fa-regular fa-calendar w-4 text-center text-zinc-500"></i>
+                                    <dd>{{ $job['period'] }}</dd>
+                                    @if ($job['current'] ?? false)
+                                        <span class="rounded-full bg-emerald-400/10 px-2 py-0.5 text-xs font-medium text-emerald-300">Current</span>
+                                    @endif
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <dt class="sr-only">Type</dt>
+                                    <i class="fa-solid fa-briefcase w-4 text-center text-zinc-500"></i>
+                                    <dd>{{ $job['type'] }}</dd>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <dt class="sr-only">Location</dt>
+                                    <i class="fa-solid fa-location-dot w-4 text-center text-zinc-500"></i>
+                                    <dd>{{ $job['location'] }}</dd>
+                                </div>
+                            </dl>
+                        </div>
+
+                        <ul class="grid gap-x-8 gap-y-3 text-sm leading-relaxed text-zinc-300 md:grid-cols-2 lg:col-span-2">
+                            @foreach ($job['highlights'] as $highlight)
+                                <li class="flex gap-3">
+                                    <i class="fa-solid fa-check mt-1 text-xs text-sky-400"></i>
+                                    <span>{{ $highlight }}</span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </article>
+                @endforeach
+            </div>
+        </section>
+
         {{-- Projects --}}
         <section id="projects" class="mx-auto max-w-6xl px-4 py-24 sm:px-6">
             <div data-reveal class="max-w-2xl">
-                <p class="font-mono text-sm text-sky-400">02 / Work</p>
+                <p class="font-mono text-sm text-sky-400">03 / Work</p>
                 <h2 class="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">Selected projects</h2>
                 <p class="mt-4 text-zinc-400">A few things I have built or contributed to, from large community platforms to focused tools.</p>
             </div>
@@ -249,7 +323,7 @@
             <div data-reveal class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-sky-500/10 via-zinc-900 to-indigo-500/10 px-6 py-14 text-center sm:px-12 sm:py-20">
                 <div aria-hidden="true" class="absolute -top-24 left-1/2 h-48 w-[32rem] -translate-x-1/2 rounded-full bg-sky-400/20 blur-3xl"></div>
 
-                <p class="relative font-mono text-sm text-sky-400">03 / Contact</p>
+                <p class="relative font-mono text-sm text-sky-400">04 / Contact</p>
                 <h2 class="relative mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl">Let's build something together</h2>
                 <p class="relative mx-auto mt-5 max-w-xl text-lg text-zinc-400">
                     Have a project in mind or a team that needs a backend developer? My inbox is open, in English or French.

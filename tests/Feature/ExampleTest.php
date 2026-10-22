@@ -12,6 +12,11 @@ test('home page shows the portfolio content', function () {
     $response->assertSee(config('portfolio.name'))
         ->assertSee(config('portfolio.role'));
 
+    foreach (config('portfolio.experience') as $job) {
+        $response->assertSee($job['company'])
+            ->assertSee($job['role']);
+    }
+
     foreach (config('portfolio.projects') as $project) {
         $response->assertSee($project['name']);
     }

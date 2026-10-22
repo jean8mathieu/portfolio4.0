@@ -60,6 +60,31 @@ return [
         ],
     ],
 
+    'experience' => [
+        [
+            'company' => 'MyEvent.com',
+            'url' => 'https://myevent.com/',
+            'icon' => 'fa-solid fa-calendar-check',
+            'role' => 'Head of Development & Partner',
+            'period' => 'Nov 2022 – Present',
+            'type' => 'Full-time',
+            'location' => 'Montreal, Quebec, Canada · Remote',
+            'current' => true,
+            'highlights' => [
+                'Architect and drive the development of scalable SaaS platforms, from concept to production.',
+                'Lead the modernization of a legacy platform into a scalable, maintainable architecture.',
+                'Lead and mentor a team of software developers, providing technical leadership and engineering best practices.',
+                'Design and build new products and platform features from the ground up with a long-term technical vision.',
+                'Define technical roadmaps and deliver complex initiatives through strategic, phased releases.',
+                'Manage production deployments and ensure platform stability, reliability, and high availability.',
+                'Design, develop, and maintain full-stack applications while remaining actively involved in the codebase.',
+                'Collaborate with cross-functional teams to translate business requirements into scalable technical solutions.',
+                'Design and implement AI-powered features and internal tools to improve customer support, automate workflows, and enhance the experience for organizers and employees.',
+                'Partner with company leadership to align engineering strategy with business objectives and long-term product vision.',
+            ],
+        ],
+    ],
+
     'projects' => [
         [
             'name' => 'TruckersMP',
