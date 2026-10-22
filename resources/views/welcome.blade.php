@@ -184,13 +184,13 @@
                 <p class="mt-4 text-zinc-400">A few things I have built or contributed to, from large community platforms to focused tools.</p>
             </div>
 
-            <div class="mt-12 grid gap-5 lg:grid-cols-3">
+            <div class="mt-12 grid gap-5 md:grid-cols-2">
                 @foreach ($p['projects'] as $project)
                     @php($featured = $project['featured'] ?? false)
-                    <article data-reveal style="--reveal-delay: {{ ($loop->index % 3) * 80 }}ms"
+                    <article data-reveal style="--reveal-delay: {{ ($loop->index % 2) * 80 }}ms"
                              @class([
                                  'card-glow group/card relative flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:-translate-y-1 hover:border-sky-400/30 sm:p-8',
-                                 'lg:col-span-3' => $featured,
+                                 'md:col-span-2' => $featured,
                              ])>
                         <div class="flex items-start justify-between gap-4">
                             <div class="flex items-center gap-4">
@@ -216,7 +216,16 @@
 
                         <p class="mt-5 leading-relaxed text-zinc-400">{{ $project['description'] }}</p>
 
-                        <ul @class(['mt-6 grid gap-x-8 gap-y-2.5 text-sm text-zinc-300', 'sm:grid-cols-2 lg:grid-cols-3' => $featured])>
+                        @isset($project['highlights_title'])
+                            <h4 class="mt-6 font-mono text-xs tracking-wide text-zinc-500 uppercase">{{ $project['highlights_title'] }}</h4>
+                        @endisset
+
+                        <ul @class([
+                            'grid gap-x-8 gap-y-2.5 text-sm text-zinc-300',
+                            'mt-3' => isset($project['highlights_title']),
+                            'mt-6' => ! isset($project['highlights_title']),
+                            'sm:grid-cols-2 lg:grid-cols-4' => $featured,
+                        ])>
                             @foreach ($project['highlights'] as $highlight)
                                 <li class="flex gap-3">
                                     <i class="fa-solid fa-check mt-1 text-xs text-sky-400"></i>

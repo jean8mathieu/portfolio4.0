@@ -27,7 +27,7 @@ return [
 
     'stats' => [
         ['value' => '2014', 'label' => 'Shipping code since'],
-        ['value' => '4.6M+', 'label' => 'Users served on TruckersMP'],
+        ['value' => '4.6M+', 'label' => 'Registered TruckersMP users'],
         ['value' => 'EN / FR', 'label' => 'Fully bilingual'],
     ],
 
@@ -65,17 +65,35 @@ return [
             'name' => 'TruckersMP',
             'icon' => 'fa-solid fa-truck',
             'featured' => true,
-            'description' => 'Multiplayer experience for Euro Truck Simulator 2 and American Truck Simulator with 4.6M+ registered users.',
+            'description' => 'Multiplayer mod for Euro Truck Simulator 2 and American Truck Simulator with 4.6M+ registered users. I contributed to the platform by building the systems below.',
+            'highlights_title' => 'What I built',
             'highlights' => [
                 'Created the ban appeal system',
                 'Created the report system',
-                'Implemented the news system',
-                'Developed the notifications system',
+                'Created the feedback system',
+                'Created the survey system',
+                'Created the poll system',
+                'Created the knowledge base system',
+                'Created the support system',
                 'Created the VTC system',
+                'Created the flow system',
                 'Reworked the user profile page',
             ],
             'stack' => ['Laravel', 'PHP', 'MySQL', 'jQuery', 'Bootstrap'],
             'url' => 'https://truckersmp.com',
+        ],
+        [
+            'name' => 'URL Shortener',
+            'icon' => 'fa-solid fa-link',
+            'description' => 'Free and fast link shortener: paste a long URL and get a short link you can share anywhere.',
+            'highlights' => [
+                'Instant shortening without a page reload',
+                'No account or sign-up required',
+                'Links screened against a blocklist',
+                'One-click copy to clipboard',
+            ],
+            'stack' => ['Laravel', 'PHP', 'jQuery', 'Bootstrap'],
+            'url' => 'https://url.jmdev.ca/',
         ],
         [
             'name' => 'Portfolio Website',
