@@ -15,8 +15,6 @@ return [
 
     'name' => 'Jean-Mathieu Emond',
 
-    'initials' => 'JM',
-
     'role' => 'Backend Web Developer',
 
     'location' => 'Quebec, Canada',

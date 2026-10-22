@@ -31,12 +31,22 @@
     <meta name="theme-color" content="#09090b">
 
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="JMDev">
     <meta property="og:title" content="{{ $p['name'] }} | {{ $p['role'] }}">
     <meta property="og:description" content="{{ $p['bio'] }}">
     <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:image" content="{{ asset('images/og-image.png') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="JMDev logo with {{ $p['name'] }}, {{ $p['role'] }}">
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $p['name'] }} | {{ $p['role'] }}">
+    <meta name="twitter:description" content="{{ $p['bio'] }}">
+    <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
+
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="icon" href="/images/icon-192.png" type="image/png" sizes="192x192">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -68,8 +78,8 @@
     <header data-header class="group fixed inset-x-0 top-0 z-40 border-b border-transparent transition-colors duration-300 data-scrolled:border-white/5 data-scrolled:bg-zinc-950/75 data-scrolled:backdrop-blur-xl">
         <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6" aria-label="Main">
             <a href="#top" class="flex items-center gap-3 font-semibold text-white">
-                <span class="grid size-9 place-items-center rounded-xl bg-gradient-to-br from-sky-400 to-indigo-500 font-mono text-sm font-bold text-zinc-950 shadow-lg shadow-sky-500/20">{{ $p['initials'] }}</span>
-                <span class="hidden sm:inline">{{ $p['name'] }}</span>
+                <img src="/images/logo.webp" alt="JMDev" width="179" height="144" class="h-12 w-auto">
+                <span class="hidden border-l border-white/10 pl-3 sm:inline">{{ $p['name'] }}</span>
             </a>
 
             <div class="hidden items-center gap-1 md:flex">
