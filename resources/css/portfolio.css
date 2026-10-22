@@ -1,0 +1,87 @@
+@import 'tailwindcss';
+
+@source '../views/welcome.blade.php';
+@source '../../config/portfolio.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    --animate-drift: drift 24s ease-in-out infinite;
+    --animate-pulse-ring: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+    @keyframes drift {
+        0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+        25% { transform: translate3d(2.5rem, -3rem, 0) rotate(6deg); }
+        50% { transform: translate3d(-1.5rem, -5rem, 0) rotate(-4deg); }
+        75% { transform: translate3d(-3rem, -1.5rem, 0) rotate(3deg); }
+    }
+
+    @keyframes pulse-ring {
+        0% { transform: scale(1); opacity: 0.7; }
+        100% { transform: scale(2.4); opacity: 0; }
+    }
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 5rem;
+        color-scheme: dark;
+    }
+
+    ::selection {
+        background-color: var(--color-sky-400);
+        color: var(--color-zinc-950);
+    }
+}
+
+@layer components {
+    /* Faint grid that fades out towards the edges of the hero. */
+    .bg-grid {
+        background-image:
+            linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+        background-size: 4rem 4rem;
+        mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 100%);
+    }
+
+    /* Cards get a soft spotlight that follows the cursor (see portfolio.js). */
+    .card-glow {
+        background-image: radial-gradient(
+            28rem circle at var(--glow-x, 50%) var(--glow-y, -20%),
+            rgb(56 189 248 / 0.08),
+            transparent 45%
+        );
+    }
+}
+
+/* Scroll reveal: only hide content when JS is available to show it again. */
+.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .js [data-reveal] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .animate-drift,
+    .animate-pulse-ring {
+        animation: none;
+    }
+}
