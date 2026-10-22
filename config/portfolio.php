@@ -27,7 +27,7 @@ return [
 
     'stats' => [
         ['value' => '2014', 'label' => 'Shipping code since'],
-        ['value' => '4.6M+', 'label' => 'Registered TruckersMP users'],
+        ['value' => '6.2M+', 'label' => 'Registered TruckersMP users'],
         ['value' => 'EN / FR', 'label' => 'Fully bilingual'],
     ],
 
@@ -90,7 +90,7 @@ return [
             'name' => 'TruckersMP',
             'icon' => 'fa-solid fa-truck',
             'featured' => true,
-            'description' => 'Multiplayer mod for Euro Truck Simulator 2 and American Truck Simulator with 4.6M+ registered users. I contributed to the platform by building the systems below.',
+            'description' => 'Multiplayer mod for Euro Truck Simulator 2 and American Truck Simulator with 6.2M+ registered users. I contributed to the platform by building the systems below.',
             'highlights_title' => 'What I built',
             'highlights' => [
                 'Created the ban appeal system',
